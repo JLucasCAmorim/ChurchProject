@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\File;
 use App\Post;
+use App\Subscription;
 class HomeController extends Controller
 {
     /**
@@ -62,6 +63,19 @@ class HomeController extends Controller
       ->paginate(10);
 
          return view('artigo',compact('posts'))
+
+             ->with('i', ($request->input('page', 1) - 1) * 1);
+
+
+    }
+
+    public function inscricao (Request $request)
+    {
+      $subscriptions= Subscription::latest()
+      ->orderBy('id','desc')
+      ->paginate(10);
+
+         return view('inscricao',compact('subscriptions'))
 
              ->with('i', ($request->input('page', 1) - 1) * 1);
 

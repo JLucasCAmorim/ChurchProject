@@ -22,9 +22,11 @@ Route::get('contact-us', 'ContactUSController@contactUS');
 Route::post('contact-us', ['as'=>'contactus.store','uses'=>'ContactUSController@contactUSPost']);
 
 Route::resource('files', 'FileController');
+Route::resource('subscriptions', 'SubscriptionController');
 Route::resource('posts', 'PostController');
 Route::get('/', 'HomeController@index')->name('home');
 Route::get('/show/{id}', 'HomeController@show')->name('show');
 Route::get('/eventos', 'HomeController@event')->name('evento');
 Route::get('/artigos', 'HomeController@artigo')->name('artigo');
+Route::get('/inscricoes', 'HomeController@inscricao')->name('inscricao');
 Route::get('/home', 'HomeController@index')->name('home');

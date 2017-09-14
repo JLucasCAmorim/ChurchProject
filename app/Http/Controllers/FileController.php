@@ -68,7 +68,7 @@ class FileController extends Controller
 
                 $avatar = $request->file('avatar');
                 $filename = time() . '.' . $avatar->getClientOriginalExtension();
-                Image::make($avatar)->resize(918,300)->save(public_path('/uploads/avatars/' . $filename, 100));
+                Image::make($avatar)->save(public_path('/uploads/avatars/' . $filename, 100));
                 $p= File::find($id);
                 if($p->avatar != NULL && $p->avatar != 'Evento.jpeg'){
                 unlink(public_path('/uploads/avatars/') . $p->avatar);

@@ -38,6 +38,7 @@
                         @else
                         <li><a href="{{ url('files') }}">Arquivos</a></li>
                           <li><a href="{{ route('register') }}">Registrar</a></li>
+                          <li><a href="{{ url('subscriptions') }}">Eventos</a></li>
                           <li><a href="{{ url('posts') }}">Post</a></li>
                             <li>
                                 <a class="dropdown-button" href="#!" data-activates="dropdown2">
