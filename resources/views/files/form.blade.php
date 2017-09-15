@@ -19,7 +19,10 @@
 @endif
 
 <div class="row">
-    <form class="col s12">
+
+    <div class="container center-align">
+      <h3 class="grey-text text-lighten-5">Clique no botão e ele criará automáticamente</h3>
+    </div>
 
     <div class="fixed-action-btn">
 

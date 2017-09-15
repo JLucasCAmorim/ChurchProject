@@ -21,10 +21,13 @@ Auth::routes();
 Route::get('contact-us', 'ContactUSController@contactUS');
 Route::post('contact-us', ['as'=>'contactus.store','uses'=>'ContactUSController@contactUSPost']);
 
+Route::resource('clients', 'ClientController');
 Route::resource('files', 'FileController');
 Route::resource('subscriptions', 'SubscriptionController');
 Route::resource('posts', 'PostController');
 Route::get('/', 'HomeController@index')->name('home');
+Route::get('/cadastro/{id}', 'HomeController@cadastro')->name('cadastro');
+Route::post('cadastro', ['as'=>'incricao.store','uses'=>'HomeController@store']);
 Route::get('/show/{id}', 'HomeController@show')->name('show');
 Route::get('/eventos', 'HomeController@event')->name('evento');
 Route::get('/artigos', 'HomeController@artigo')->name('artigo');

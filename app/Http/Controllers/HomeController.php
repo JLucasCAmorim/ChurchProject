@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\File;
 use App\Post;
 use App\Subscription;
+use App\Client;
 class HomeController extends Controller
 {
     /**
@@ -81,5 +82,37 @@ class HomeController extends Controller
 
 
     }
+    public function cadastro($id)
+    {
+      $subscription = Subscription::find($id);
+      return view('clients.create',compact('subscription'));
+    }
+    public function store(Request $request)
+    {
+      $this->validate($request, [
 
+        'nome' => 'required',
+        'igreja'=> 'required',
+        'polo'=> 'required',
+        'liderPolo' => 'required',
+        'cidade'=> 'required',
+        'whatsapp'=> 'required',
+        'responsavel'=> 'required',
+        'email'=> 'required',
+        'idade'=> 'required',
+        'pastor'=> 'required',
+       'liderjuventude'=> 'required',
+        'estado'=> 'required',
+        'necessidade'=> 'required',
+        'idevento'=> 'required',
+
+      ]);
+
+      Client::create($request->all());
+
+      return redirect()->route('inscricao')
+
+                      ->with('success','Inscrição realizada com sucesso, realize seu pagamento! Obrigado!');
+
+  }
 }

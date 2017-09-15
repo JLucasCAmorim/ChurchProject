@@ -4,7 +4,15 @@
 
 @section('content')
 <div class="section"></div>
+@if ($message = Session::get('success'))
 
+<div class="card-panel teal lighten-2 white-text">
+
+    <p>{{ $message }}</p>
+
+</div>
+
+@endif
 
  <div class="row">
    @foreach ($subscriptions as $subscription)
@@ -24,7 +32,7 @@
            </div>
            <div class="card-action">
 
-             <span>Valor: R${{ $subscription->price }}<a class="secondary-content" href="#">Inscreva-se</a></span>
+             <span>Valor: R${{ $subscription->price }}<a class="secondary-content" href="{{ route('cadastro',$subscription->id) }}">Inscreva-se</a></span>
 
            </div>
          </div>

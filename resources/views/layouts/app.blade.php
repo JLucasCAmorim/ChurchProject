@@ -8,7 +8,7 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>{{ config('app.name', 'Laravel') }}</title>
+    <title>JUBASMA</title>
 
     <!-- Styles -->
     <link href="{{ asset('css/materialize.min.css') }}" type="text/css" rel="stylesheet" media="screen,projection">
@@ -37,6 +37,7 @@
                             <li><a href="{{ url('/inscricoes') }}">Inscrições</a></li>
                         @else
                         <li><a href="{{ url('files') }}">Arquivos</a></li>
+                        <li><a href="{{ url('clients') }}">Clientes</a></li>
                           <li><a href="{{ route('register') }}">Registrar</a></li>
                           <li><a href="{{ url('subscriptions') }}">Eventos</a></li>
                           <li><a href="{{ url('posts') }}">Post</a></li>
