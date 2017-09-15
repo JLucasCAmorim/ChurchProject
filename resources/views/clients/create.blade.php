@@ -17,4 +17,4 @@
 </div>
 </div>
 @endsection
-@include('layouts.partials.back', ['route'=>'clients.index'])
+@include('layouts.partials.back', ['route'=>'inscricao'])

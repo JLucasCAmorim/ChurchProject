@@ -2,7 +2,7 @@
 
     <div class="card-panel red lighten-2 white-text">
 
-        <strong>Whoops!</strong> There were some problems with your input.<br><br>
+        <strong>Whoops!</strong> Seu cadastro tem alguns problemas.<br><br>
 
         <ul>
 

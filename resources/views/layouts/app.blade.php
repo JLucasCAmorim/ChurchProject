@@ -88,14 +88,14 @@
       <li><a href="{{ url('/eventos') }}">Eventos</a></li>
       <li><div class="divider"></div></li>
       <li><a href="{{ url('/artigos') }}">Artigos</a></li>
+      <li><div class="divider"></div></li>
+      <li><a href="{{ url('/inscricoes') }}">Inscrições</a></li>
     @else
-    <li><a href="{{ url('/home') }}">Home</a></li>
-    <li><div class="divider"></div></li>
-    <li><a href="{{ url('posts') }}">Post</a></li>
-     <li><div class="divider"></div></li>
-     <li><a href="{{ url('files') }}">Arquivos</a></li>
-     <li><div class="divider"></div></li>
-       <li><a href="{{ route('register') }}">Registrar</a></li>
+    <li><a href="{{ url('files') }}">Arquivos</a></li>
+    <li><a href="{{ url('clients') }}">Clientes</a></li>
+      <li><a href="{{ route('register') }}">Registrar</a></li>
+      <li><a href="{{ url('subscriptions') }}">Eventos</a></li>
+      <li><a href="{{ url('posts') }}">Post</a></li>
        <li><div class="divider"></div></li>
      <li>
             <a class="dropdown-button" href="#!" data-activates="dropdown1">
