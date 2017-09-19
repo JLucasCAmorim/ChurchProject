@@ -27,7 +27,7 @@
 
              <label for="first_name">Titulo</label>
 
-            {!! Form::text('title', null, array('placeholder' => 'Title','class' => 'form-control')) !!}
+            {!! Form::text('title', null, array('placeholder' => 'Titulo','class' => 'form-control')) !!}
 
         </div>
       </div>

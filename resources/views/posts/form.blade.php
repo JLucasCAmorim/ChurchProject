@@ -27,7 +27,7 @@
 
              <label for="first_name">Titulo</label>
 
-            {!! Form::text('title', null, array('placeholder' => 'Title','class' => 'form-control')) !!}
+            {!! Form::text('title', null, array('placeholder' => 'Titulo','class' => 'form-control')) !!}
 
         </div>
       </div>
@@ -37,9 +37,9 @@
 
       <div class="input-field col s12">
 
-             <label for="first_name">Conteudo</label>
+             <label for="first_name">Conteúdo</label>
 
-            {!! Form::textarea('content', null, array('placeholder' => 'Content','class' => 'form-control','style'=>'height:100px')) !!}
+            {!! Form::textarea('content', null, array('placeholder' => 'Conteúdo','class' => 'form-control','style'=>'height:100px')) !!}
 
         </div>
 

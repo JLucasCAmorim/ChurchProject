@@ -103,7 +103,9 @@ class FileController extends Controller
         {
 
           $file = File::find($id);
+          if($file->avatar != NULL && $file->avatar != 'Evento.jpeg'){
           unlink(public_path('/uploads/avatars/') . $file->avatar);
+          }
           $file -> delete();
 
 

@@ -27,7 +27,7 @@
 
              <label for="first_name">Titulo</label>
 
-            {!! Form::text('title', null, array('placeholder' => 'Title','class' => 'form-control')) !!}
+            {!! Form::text('title', null, array('placeholder' => 'Titulo','class' => 'form-control')) !!}
 
         </div>
       </div>
@@ -54,7 +54,7 @@
     <div class="row">
       <div class="file-field input-field col s12">
          <div class="btn">
-           <span>File</span>
+           <span>Arquivo</span>
            {!! Form::file('avatar', null, array('placeholder' => 'Avatar','class' => 'form-control')) !!}
          </div>
          <div class="file-path-wrapper">

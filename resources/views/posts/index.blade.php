@@ -22,7 +22,9 @@
         <div class="col s12 m6">
           <div class="card large">
             <div class="card-image waves-effect waves-block waves-light">
-             <img class="activator noticia" src="/uploads/imagens/{{ $post->avatar }}" alt="{{ $post->avatar}}"/>
+              @foreach ($post->images->slice(0, 1) as $image)
+              <img class="activator noticia" src="/uploads/postimages/{{ $image->avatar }}" alt="{{ $image->avatar}}"/>
+              @endforeach
           </div>
            <div class="card-content">
               <span class="card-title activator grey-text text-darken-4">{{ $post->title }}<i class="material-icons right">more_vert</i></span>

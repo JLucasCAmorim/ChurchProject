@@ -4,22 +4,23 @@
 
 @section('content')
 <div class="row">
-        <div class="col s12 m12 ">
-          <div class="card">
-            <div class="card-image">
-              <center>
-		            <img class="responsive-img post-imagem"  src="/uploads/imagens/{{ $post->avatar }}" alt="{{ $post->avatar}}">
-              </center>
-
-              </div>
-  	<div class="card-content">
-       <span class="center card-title">{{ $post->title}}</span>
+  <div class="container">
+  <div class="slider">
+    <ul class="slides">
+        @foreach($postimages as $postimage)
+		     <li><img src="/uploads/postimages/{{ $postimage->avatar }}" alt="{{ $postimage->avatar}}"></li>
+         @endforeach
+      </ul>
+  </div>
+      <center>
+       <h5>{{ $post->title}}</h5>
+     </center>
       <p style="text-align:justify;">{{ $post->content }}</p>
     </div>
   </div>
-  </div>
 
 
-</div>
+
+
 
 @endsection

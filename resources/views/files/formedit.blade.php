@@ -18,13 +18,12 @@
 
 @endif
 
-<div class="row">
-    <form class="col s12">
+
 
   <div class="row">
       <div class="file-field input-field col s12">
            <div class="btn">
-             <span>File</span>
+             <span>Arquivo</span>
              {!! Form::file('avatar', null, array('placeholder' => 'Avatar','class' => 'form-control')) !!}
            </div>
            <div class="file-path-wrapper">

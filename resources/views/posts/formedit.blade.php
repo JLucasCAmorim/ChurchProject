@@ -27,7 +27,7 @@
 
              <label for="first_name">Titulo</label>
 
-            {!! Form::text('title', null, array('placeholder' => 'Title','class' => 'form-control')) !!}
+            {!! Form::text('title', null, array('placeholder' => 'Titulo','class' => 'form-control')) !!}
 
         </div>
       </div>
@@ -37,9 +37,9 @@
 
       <div class="input-field col s12">
 
-             <label for="first_name">Conteudo</label>
+             <label for="first_name">Conteúdo</label>
 
-            {!! Form::textarea('content', null, array('placeholder' => 'Content','class' => 'form-control','style'=>'height:100px')) !!}
+            {!! Form::textarea('content', null, array('placeholder' => 'Conteúdo','class' => 'form-control','style'=>'height:100px')) !!}
 
         </div>
 
@@ -50,23 +50,16 @@
         <label>Categoria</label>
       </div>
   </div>
-    <div class="row">
-      <div class="file-field input-field col s12">
-         <div class="btn">
-           <span>File</span>
-           {!! Form::file('avatar', null, array('placeholder' => 'Avatar','class' => 'form-control')) !!}
-         </div>
-         <div class="file-path-wrapper">
-           <input class="file-path validate" type="text">
 
-        </div>
-      </div>
-      </div>
-   <div class="fixed-action-btn">
+  <div class="fixed-action-btn horizontal click-to-toggle">
+   <a class="btn-floating btn-large red">
+     <i class="material-icons">menu</i>
+   </a>
+   <ul>
+        <li><button type="submit" class="btn-floating btn-large red"><i class="large material-icons">save</i></button></li>
+        <li> <a class=" modal-trigger btn-floating btn-large red" href="#modal1"><i class="large material-icons">image</i></a></li>
+  </div>
 
-            <button type="submit" class="btn-floating btn-large red"><i class="large material-icons">save</i></button>
-
-    </div>
 
   </form>
 </div>

@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use App\Client;
 use App\Subscription;
 use Illuminate\Http\Request;
-
+use Illuminate\Support\Facades\DB;
 class ClientController extends Controller
 {
   public function __construct()
@@ -19,13 +19,12 @@ class ClientController extends Controller
      */
     public function index(Request $request)
     {
-      $clients= Client::latest()->paginate(10);
-      foreach ($clients as $client) {
-        $event = Subscription::find($client->idevento);
-        $title = $event->title;
-      }
+      $clients= DB::table('clients')
+      ->leftJoin('subscriptions', 'idevento', '=', 'subscriptions.id')
+      ->get();
 
-      return view('clients.index',compact('clients','title'))
+
+      return view('clients.index',compact('clients'))
 
           ->with('i', ($request->input('page', 1) - 1) * 10);
     }

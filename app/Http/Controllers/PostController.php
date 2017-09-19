@@ -5,8 +5,9 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 
 use App\Post;
-
+use App\PostImage;
 use Image;
+use Illuminate\Support\Facades\DB;
 class PostController extends Controller
 
 {
@@ -77,8 +78,11 @@ class PostController extends Controller
     {
 
         $post= Post::find($id);
+        $postimages = DB::table('post_images')
+        ->where('post_id', '=', $id)->get();
 
-        return view('posts.edit',compact('post'));
+
+        return view('posts.edit',compact('post', 'postimages'));
 
     }
 
@@ -96,39 +100,13 @@ class PostController extends Controller
 
         ]);
 
-          if($request->hasFile('avatar')){
-
-            $avatar = $request->file('avatar');
-            $filename = time() . '.' . $avatar->getClientOriginalExtension();
-            Image::make($avatar)->resize(300,300)->save(public_path('/uploads/imagens/' . $filename));
-            $post= Post::find($id);
-            if($post->avatar != NULL && $post->avatar != 'default.jpg'){
-            unlink(public_path('/uploads/imagens/') . $post->avatar);
-            $post->avatar = $filename;
-            $post->save();
-            }
-            else{
-
-              $post->avatar = $filename;
-              $post->save();
-
-            }
-
-            return redirect()->route('posts.index')
-
-                            ->with('success','Post editado com sucesso!');
-
-
-        }
-        else{
-
           Post::find($id)->update($request->all());
 
           return redirect()->route('posts.index')
 
                           ->with('success','Post editado com sucesso!');
 
-        }
+
     }
 
 

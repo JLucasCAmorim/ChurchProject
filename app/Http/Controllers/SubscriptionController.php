@@ -63,7 +63,7 @@ class SubscriptionController extends Controller
 
       return redirect()->route('subscriptions.index')
 
-                      ->with('success','Post criado com sucesso');
+                      ->with('success','Evento criado com sucesso');
     }
 
     /**

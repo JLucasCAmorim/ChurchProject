@@ -2,11 +2,13 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
 use App\File;
 use App\Post;
 use App\Subscription;
 use App\Client;
+use App\PostImage;
 class HomeController extends Controller
 {
     /**
@@ -21,7 +23,11 @@ class HomeController extends Controller
      */
     public function index(Request $request)
     {
-      $posts= Post::latest()->paginate(10);
+
+
+      $posts= Post::where('category', 'noticia')
+      ->paginate(10);
+
 
       $files= File::latest()
       ->orderBy('id','desc')
@@ -31,35 +37,38 @@ class HomeController extends Controller
 
          return view('home',compact('files','posts'))
 
-             ->with('i', ($request->input('page', 1) - 1) * 1);
+             ->with('i', ($request->input('page', 1) - 1) * 10);
 
 
     }
+
+
     public function show($id)
 
     {
 
         $post= Post::find($id);
+        $postimages = DB::table('post_images')
+        ->where('post_id', '=', $id)->get();
 
-        return view('show',compact('post'));
+        return view('show',compact('post', 'postimages'));
 
     }
 
     public function event(Request $request)
     {
-      $posts= Post::latest()
-      ->orderBy('id','desc')
+      $posts= Post::where('category', 'evento')
       ->paginate(10);
 
          return view('event',compact('posts'))
 
-             ->with('i', ($request->input('page', 1) - 1) * 1);
+             ->with('i', ($request->input('page', 1) - 1) * 10);
 
 
     }
     public function artigo (Request $request)
     {
-      $posts= Post::latest()
+      $posts= Post::where('category', 'artigo')
       ->orderBy('id','desc')
       ->paginate(10);
 

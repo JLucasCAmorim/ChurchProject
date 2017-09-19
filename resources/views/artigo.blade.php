@@ -15,16 +15,20 @@
 					<div class="col s12 m6">
 						<div class="card large">
 							<div class="card-image">
-							 <img class="noticia" src="/uploads/imagens/{{ $post->avatar }}" alt="{{ $post->avatar}}"/>
-                <span class="card-title">{{ $post->title }}</span>
-							</div>
+								@foreach ($post->images->slice(0, 1) as $image)
+				       	<img class="noticia" src="/uploads/postimages/{{ $image->avatar }}" alt="{{ $image->avatar}}"/>
+								@endforeach
+
+
+							 <span class="card-title">{{ $post->title }}</span>
+				     </div>
 							<div class="card-content">
 
 								<p style="text-align:justify;">{{ str_limit($post->content, $limit = 130, $end = '...')}}</p>
 							</div>
 							<div class="card-action">
 
-								<a href="{{ route('show',$post->id) }}">Leia mais...</a>
+								<a class="blue-text" href="{{ route('show',$post->id) }}">Leia mais...</a>
 							</div>
 						</div>
 					</div>
@@ -34,6 +38,9 @@
 		</div>
 	</div>
 </div>
+<ul class="pagination">
+{!! $posts->render() !!}
+</ul>
 </div>
 
 @endsection

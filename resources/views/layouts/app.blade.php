@@ -16,7 +16,66 @@
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 </head>
 <body>
-  <div id="app">
+<!-- Mobile Menu -->
+  <ul id="slide-out" class="side-nav">
+<li><div class="user-view">
+<div class="background">
+<img style="height:150px; width:300px;" src="/imagens/jubasma.jpg">
+</div>
+@if (Auth::guest())
+
+<a href="#!email"><span class="white-text email">Obrigado por usar nosso site</span></a>
+@else
+<a href="#!user"><img class="responsive-img circle" src="/imagens/lion.jpg"></a>
+
+<a href="#!name"><span class="white-text name">{{ Auth::user()->name }}</span></a>
+<a href="#!email"><span class="white-text email">{{ Auth::user()->email }}</span></a>
+@endif
+</div>
+<!-- Authentication Links -->
+@if (Auth::guest())
+<li><a href="{{ url('/home') }}">Home</a></li>
+<li><div class="divider"></div></li>
+<li><a href="{{ url('sobre') }}">Quem somos?</a></li>
+<li><div class="divider"></div></li>
+<li><a href="{{ url('/contact-us') }}">Contato</a></li>
+<li><div class="divider"></div></li>
+<li><a href="{{ url('/eventos') }}">Eventos</a></li>
+<li><div class="divider"></div></li>
+<li><a href="{{ url('/artigos') }}">Artigos</a></li>
+<li><div class="divider"></div></li>
+<li><a href="{{ url('/inscricoes') }}">Inscrições</a></li>
+@else
+<li><a href="{{ url('files') }}">Arquivos</a></li>
+<li><a href="{{ url('clients') }}">Clientes</a></li>
+<li><a href="{{ route('register') }}">Registrar</a></li>
+<li><a href="{{ url('subscriptions') }}">Eventos</a></li>
+<li><a href="{{ url('posts') }}">Post</a></li>
+<li><div class="divider"></div></li>
+<li>
+<a class="dropdown-button" href="#!" data-activates="dropdown1">
+{{ Auth::user()->name }} <i class="material-icons right">arrow_drop_down</i>
+</a>
+
+<ul id="dropdown1" class="dropdown-content" role="menu">
+<li>
+  <a href="{{ route('logout') }}"
+      onclick="event.preventDefault();
+               document.getElementById('logout-form').submit();">
+      Logout
+  </a>
+
+  <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+      {{ csrf_field() }}
+  </form>
+</li>
+</ul>
+</li>
+@endif
+</ul>
+<!-- End Mobile Menu -->
+<!-- Start Navbar -->
+  <div class="navbar-fixed">
 <nav class="#1a237e indigo darken-4" role="navigation">
   <div class="nav-wrapper container">
     <a id="logo-container" href="{{ url('/home') }}" class="brand-logo">
@@ -62,71 +121,17 @@
                             </li>
                         @endguest
                     </ul>
-                    <ul id="slide-out" class="side-nav">
-  <li><div class="user-view">
-    <div class="background">
-      <img style="height:150px; width:300px;" src="/imagens/jubasma.jpg">
-    </div>
-    @if (Auth::guest())
 
-    <a href="#!email"><span class="white-text email">Obrigado por usar nosso site</span></a>
-    @else
-    <a href="#!user"><img class="responsive-img circle" src="/imagens/lion.jpg"></a>
-
-      <a href="#!name"><span class="white-text name">{{ Auth::user()->name }}</span></a>
-      <a href="#!email"><span class="white-text email">{{ Auth::user()->email }}</span></a>
-    @endif
-  </div>
-    <!-- Authentication Links -->
-    @if (Auth::guest())
-      <li><a href="{{ url('/home') }}">Home</a></li>
-      <li><div class="divider"></div></li>
-      <li><a href="{{ url('sobre') }}">Quem somos?</a></li>
-      <li><div class="divider"></div></li>
-      <li><a href="{{ url('/contact-us') }}">Contato</a></li>
-      <li><div class="divider"></div></li>
-      <li><a href="{{ url('/eventos') }}">Eventos</a></li>
-      <li><div class="divider"></div></li>
-      <li><a href="{{ url('/artigos') }}">Artigos</a></li>
-      <li><div class="divider"></div></li>
-      <li><a href="{{ url('/inscricoes') }}">Inscrições</a></li>
-    @else
-    <li><a href="{{ url('files') }}">Arquivos</a></li>
-    <li><a href="{{ url('clients') }}">Clientes</a></li>
-      <li><a href="{{ route('register') }}">Registrar</a></li>
-      <li><a href="{{ url('subscriptions') }}">Eventos</a></li>
-      <li><a href="{{ url('posts') }}">Post</a></li>
-       <li><div class="divider"></div></li>
-     <li>
-            <a class="dropdown-button" href="#!" data-activates="dropdown1">
-                {{ Auth::user()->name }} <i class="material-icons right">arrow_drop_down</i>
-            </a>
-
-            <ul id="dropdown1" class="dropdown-content" role="menu">
-                <li>
-                    <a href="{{ route('logout') }}"
-                        onclick="event.preventDefault();
-                                 document.getElementById('logout-form').submit();">
-                        Logout
-                    </a>
-
-                    <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-                        {{ csrf_field() }}
-                    </form>
-                </li>
-            </ul>
-        </li>
-    @endif
-</ul>
 @hasSection('back')
     @yield('back')
 @else
 <a href="#" data-activates="slide-out" class="button-collapse"><i class="material-icons icon-white">menu</i></a>
 @endif
                 </div>
-            </div>
-        </nav>
 
+        </nav>
+  </div>
+<!-- End Navbar -->
         @yield('content')
     </div>
 
@@ -137,6 +142,8 @@
 
     <script>
     $(document).ready(function(){
+      $('.modal').modal();
+      $('.slider').slider();
       $(".dropdown-button").dropdown();
        $('.parallax').parallax();
        // Initialize collapse button

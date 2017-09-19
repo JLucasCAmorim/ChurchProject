@@ -56,7 +56,7 @@
             @else
             <td>Sim</td>
             @endif
-            <td>{{ $title }}</td>
+            <td>{{ $client->title }}</td>
             <td>
             <center>
 
@@ -75,6 +75,6 @@
   </table>
 
 
-{!! $clients->render() !!}
+
 
 @endsection
