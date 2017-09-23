@@ -38,9 +38,9 @@
 		</div>
 	</div>
 </div>
-<ul class="pagination">
+
 {!! $posts->render() !!}
-</ul>
+
 </div>
 
 @endsection

@@ -20,9 +20,13 @@ class ClientController extends Controller
     public function index(Request $request)
     {
       $clients= DB::table('clients')
-      ->leftJoin('subscriptions', 'idevento', '=', 'subscriptions.id')
+      ->leftJoin('subscriptions', 'subscription_id', '=', 'subscriptions.id')
+      ->select('clients.id', 'clients.nome', 'clients.igreja', 'clients.polo','clients.liderPolo',
+       'clients.whatsapp', 'clients.responsavel', 'clients.email', 'clients.idade'
+       ,'clients.pastor', 'clients.liderjuventude', 'clients.estado', 'clients.necessidade', 'subscriptions.title')
       ->get();
 
+    
 
       return view('clients.index',compact('clients'))
 
@@ -69,7 +73,7 @@ class ClientController extends Controller
        'liderjuventude'=> 'required',
         'estado'=> 'required',
         'necessidade'=> 'required',
-        'idevento'=> 'required',
+        'subscription_id'=> 'required',
 
       ]);
       Client::find($id)->update($request->all());
@@ -88,7 +92,7 @@ class ClientController extends Controller
     public function destroy($id)
     {
       $client = Client::find($id);
-      $client -> delete();
+      $client->delete();
 
 
         return redirect()->route('clients.index')

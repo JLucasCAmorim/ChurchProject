@@ -15,7 +15,8 @@
 @endif
 
  <div class="row">
-   @foreach ($subscriptions as $subscription)
+   <div class="container">
+  @foreach ($subscriptions as $subscription)
 
        <div class="col s12 m6">
          <div class="card medium">
@@ -32,14 +33,29 @@
            </div>
            <div class="card-action">
 
-             <span>Valor: R${{ $subscription->price }}<a class="secondary-content" href="{{ route('cadastro',$subscription->id) }}">Inscreva-se</a></span>
+             <span>Valor: R${{ $subscription->price }}<a class="secondary-content blue-text" href="{{ route('cadastro',$subscription->id) }}">Inscreva-se</a></span>
 
            </div>
          </div>
        </div>
-
-
    @endforeach
 </div>
+
+ </div>
+ <div class="container">
+   <h3><i class="mdi-content-send brown-text"></i></h3>
+   <p class="left-align light" style="text-align: center;">Após realizar o pagamento via DEPÓSITO, você deve enviar a foto do comprovante para o nosso e-mail ou whatsapp. Confirmando sua opção de HOSPEDAGEM, pois é LIMITADA!</p>
+  <p class="left-align light" style="text-align: center;" >
+  <span>CONTA PARA DEPOSITO</span><br/>
+  <span>Agencia: 2218</span><br/>
+  <span>Conta Corrente: 2111-3</span><br/>
+  <span>Associação Batista Sul Maranhense</span><br/>
+  </p>
+  <p>
+    <span><i class="material-icons">call</i> Whatsapp: (99) 98275-1331</span>
+    <span class="right"><i class="material-icons">email</i> jubasmamaranhao@gmail.com</span>
+  </p>
+   <div class="section"></div>
+ </div>
 
 @endsection

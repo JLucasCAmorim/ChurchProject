@@ -143,9 +143,10 @@ class SubscriptionController extends Controller
     public function destroy($id)
     {
       $subscription = Subscription::find($id);
+      if($subscription->avatar != NULL && $subscription->avatar != 'default.jpg'){
       unlink(public_path('/uploads/events/') . $subscription->avatar);
+      }
       $subscription -> delete();
-
 
         return redirect()->route('subscriptions.index')
 

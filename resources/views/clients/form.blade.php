@@ -152,7 +152,7 @@
         </div>
       </div>
 
-      {{ Form::hidden('idevento', $subscription->id ) }}
+      {{ Form::hidden('subscription_id', $subscription->id ) }}
 
 
      <button class="btn waves-effect waves-light right" type="submit" name="action">Inscrever-se

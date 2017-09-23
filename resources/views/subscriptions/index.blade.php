@@ -17,10 +17,13 @@
 
 
   <div class="row">
+    <div class="container">
+
+
     @foreach ($subscriptions as $subscription)
 
         <div class="col s12 m6">
-          <div class="card large">
+          <div class="card medium">
             <div class="card-image waves-effect waves-block waves-light">
              <img class="activator noticia" src="/uploads/events/{{ $subscription->avatar }}" alt="{{ $subscription->avatar}}"/>
           </div>
@@ -35,7 +38,7 @@
             <div class="card-action">
 
               <a class="btn btn-primary btn-sm" href="{{ route('subscriptions.edit',$subscription->id) }}"><i class="small material-icons">edit</i></a> {!!
-              Form::open(['method' => 'DELETE','route' => ['subscriptions.destroy', $subscription->id],'style'=>'display:inline']) !!}
+              Form::open(['method' => 'DELETE','route' => ['subscriptions.destroy', $subscription->id],'style'=>'display:inline','onsubmit' => 'return confirm("Você tem certeza que deseja excluir esse evento?")']) !!}
 
               <button type="submit" style="display: inline;" class="btn btn-danger btn-sm"><i class="small material-icons">delete</i></button>
               {!! Form::close() !!}
@@ -46,6 +49,7 @@
 
 
     @endforeach
+      </div>
 </div>
 
 

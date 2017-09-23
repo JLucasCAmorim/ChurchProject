@@ -9,6 +9,7 @@ use App\Post;
 use App\Subscription;
 use App\Client;
 use App\PostImage;
+use App\Portifolio;
 class HomeController extends Controller
 {
     /**
@@ -91,6 +92,24 @@ class HomeController extends Controller
 
 
     }
+    public function portifolio (Request $request)
+    {
+      $portifolios= Portifolio::latest()
+      ->orderBy('id','desc')
+      ->paginate(10);
+
+         return view('portifolio',compact('portifolios'))
+
+             ->with('i', ($request->input('page', 1) - 1) * 10);
+    }
+    public function portifolioshow($id){
+
+        $portifolio= Portifolio::find($id);
+
+
+        return view('portifolioshow',compact('portifolio'));
+
+    }
     public function cadastro($id)
     {
       $subscription = Subscription::find($id);
@@ -113,7 +132,7 @@ class HomeController extends Controller
        'liderjuventude'=> 'required',
         'estado'=> 'required',
         'necessidade'=> 'required',
-        'idevento'=> 'required',
+        'subscription_id'=> 'required',
 
       ]);
 
@@ -121,7 +140,7 @@ class HomeController extends Controller
 
       return redirect()->route('inscricao')
 
-                      ->with('success','Inscrição realizada com sucesso, realize seu pagamento! Obrigado!');
+                      ->with('success','Inscrição realizada com sucesso, realize seu pagamento, seguindo as informações no fim da página! Obrigado!');
 
   }
 }

@@ -62,7 +62,7 @@
 
              <a class="btn btn-primary btn-sm" href="{{ route('clients.edit',$client->id) }}"><i class="small material-icons">edit</i></a>
 
-             {!! Form::open(['method' => 'DELETE','route' => ['clients.destroy', $client->id],'id'=> 'FormDelete','style'=>'display:inline', 'onsubmit' => 'return confirm("Você tem certeza que deseja excluir esse perfil?")']) !!}
+             {!! Form::open(['method' => 'DELETE','route' => ['clients.destroy', $client->id],'id'=> 'FormDelete','style'=>'display:inline', 'onsubmit' => 'return confirm("Você tem certeza que deseja excluir esse cadastro?")']) !!}
 
              <button type="submit" style="display: inline;" class="btn btn-danger btn-sm"><i class="small material-icons">delete</i></button>
 

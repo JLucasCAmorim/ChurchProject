@@ -6,9 +6,9 @@
  <div class="section"></div>
 <center>
 <div class="container">
-  <div class="row">
-        <div class="col s12 z-depth-4 card-panel" style="display: inline-block; padding: 32px 48px 0px 48px; border: 1px solid #EEE;">
-            <div class="panel panel-default">
+  <div class="valign-wrapper row login-box">
+  <div class="col card hoverable s10 pull-s1 m6 pull-m3 l4 pull-l4" style="display: inline-block; padding: 32px 48px 0px 48px; border: 1px solid #EEE; ">
+          <div class="panel panel-default">
               <div class="input-field col s12 center">
                 <img src="/imagens/jubasma.jpg" alt="" style="height:100px; wight:100px;" class="circle responsive-img valign profile-image-login">
               </div>
@@ -69,12 +69,13 @@
                   </div>
             </div>
         </div>
+
+
     </div>
 </div>
 <a class="pink-text" href="{{ route('password.request') }}">
     Esqueceu sua senha?
 </a>
 </center>
-
 
 @endsection

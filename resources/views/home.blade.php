@@ -39,7 +39,7 @@
 				    </div>
 				  </div>
 
-		
+
 				@endforeach
 
 
@@ -47,7 +47,7 @@
 	</div>
 </div>
 
-
+{!! $posts->render() !!}
 
 </div>
 

@@ -115,7 +115,12 @@ class PostController extends Controller
     {
 
       $post = Post::find($id);
-      unlink(public_path('/uploads/imagens/') . $post->avatar);
+      $postimages = DB::table('post_images')
+      ->where('post_id', '=', $id)->get();
+      foreach ($postimages as $postimage) {
+        unlink(public_path('/uploads/postimages/') . $postimage->avatar);
+      }
+
       $post -> delete();
 
 

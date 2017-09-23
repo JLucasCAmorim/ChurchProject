@@ -15,6 +15,7 @@
 @endif
  <div class="section"></div>
 <div class="row">
+    <div class="container">
   @foreach ($files as $file)
         <div class="col s12 m6">
           <div class="card">
@@ -27,7 +28,7 @@
                  <center>
                 <a class="btn btn-primary btn-sm" href="{{ route('files.edit',$file->id) }}"><i class="small material-icons">edit</i></a>
 
-                 {!! Form::open(['method' => 'DELETE','route' => ['files.destroy', $file->id],'id'=> 'FormDelete','style'=>'display:inline', 'onsubmit' => 'return confirm("Você tem certeza que deseja excluir esse perfil?")']) !!}
+                 {!! Form::open(['method' => 'DELETE','route' => ['files.destroy', $file->id],'id'=> 'FormDelete','style'=>'display:inline', 'onsubmit' => 'return confirm("Você tem certeza que deseja excluir essa imagem?")']) !!}
 
                  <button type="submit" style="display: inline;" class="btn btn-danger btn-sm"><i class="small material-icons">delete</i></button>
 
@@ -39,6 +40,7 @@
 
 
 @endforeach
+    </div>
    </div>
 
 {!! $files->render() !!}

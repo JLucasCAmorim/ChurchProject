@@ -17,10 +17,13 @@
 
 
   <div class="row">
+    <div class="container">
+
+
     @foreach ($posts as $post)
 
         <div class="col s12 m6">
-          <div class="card large">
+          <div class="card medium">
             <div class="card-image waves-effect waves-block waves-light">
               @foreach ($post->images->slice(0, 1) as $image)
               <img class="activator noticia" src="/uploads/postimages/{{ $image->avatar }}" alt="{{ $image->avatar}}"/>
@@ -37,7 +40,7 @@
             <div class="card-action">
 
               <a class="btn btn-primary btn-sm" href="{{ route('posts.edit',$post->id) }}"><i class="small material-icons">edit</i></a> {!!
-              Form::open(['method' => 'DELETE','route' => ['posts.destroy', $post->id],'style'=>'display:inline']) !!}
+              Form::open(['method' => 'DELETE','route' => ['posts.destroy', $post->id],'style'=>'display:inline', 'onsubmit' => 'return confirm("Você tem certeza que deseja excluir esse post?")']) !!}
 
               <button type="submit" style="display: inline;" class="btn btn-danger btn-sm"><i class="small material-icons">delete</i></button>
               {!! Form::close() !!}
@@ -48,6 +51,7 @@
 
 
     @endforeach
+    </div>
 </div>
 
 

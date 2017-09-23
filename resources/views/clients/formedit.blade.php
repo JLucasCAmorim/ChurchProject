@@ -152,7 +152,7 @@
         </div>
       </div>
 
-      {{ Form::hidden('idevento', $client->idevento ) }}
+      {{ Form::hidden('subscription_id', $client->subscription_id ) }}
    <div class="fixed-action-btn">
 
             <button type="submit" class="btn-floating btn-large red"><i class="large material-icons">save</i></button>
