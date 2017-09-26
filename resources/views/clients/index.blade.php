@@ -14,9 +14,18 @@
 
 @endif
 <div class="section"></div>
+<div class="container">
+  {!! Form::open(array('route' => 'clients.index','method'=>'GET')) !!}
+    <div class="input-field">
+        <input id="search" placeholder="Procure por nome ou por evento" name="search" type="search" required>
+
+        <i class="material-icons">search</i>
+      </div>
+  {!! Form::close() !!}
+</div>
 
 
-<table class="bordered centered responsive-table">
+<table id="table" class="bordered centered responsive-table mdl-data-table">
         <thead>
           <tr>
               <th>Nome</th>
@@ -32,6 +41,7 @@
               <th>Estado</th>
               <th>Necessidade</th>
               <th>Evento</th>
+              <th>Pago</th>
               <th colspan="2"></th>
           </tr>
         </thead>
@@ -57,6 +67,11 @@
             <td>Sim</td>
             @endif
             <td>{{ $client->title }}</td>
+            @if($client->pago == 0)
+            <td>Não</td>
+            @else
+            <td>Sim</td>
+            @endif
             <td>
             <center>
 

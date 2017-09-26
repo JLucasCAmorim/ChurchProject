@@ -56,7 +56,7 @@ class PortifolioController extends Controller
 
           foreach ($avatars as $avatar) {
             $filename =  $avatar->getClientOriginalName(). $portifolio->name. '.' . $avatar->getClientOriginalExtension();
-            Image::make($avatar)->resize('300','300')->save(public_path('/uploads/portifolios/' . $filename, 100));
+            Image::make($avatar)->resize('500','500')->save(public_path('/uploads/portifolios/' . $filename, 100));
             PortifolioPhoto::create([
               'portifolio_id'=> $portifolio->id,
               'avatar' => $filename

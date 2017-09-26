@@ -22,7 +22,7 @@ Auth::routes();
 
 Route::get('contact-us', 'ContactUSController@contactUS');
 Route::post('contact-us', ['as'=>'contactus.store','uses'=>'ContactUSController@contactUSPost']);
-
+Route::get('/search', 'ClientController@search')->name('search');
 Route::resource('portifolios', 'PortifolioController');
 Route::resource('clients', 'ClientController');
 Route::resource('files', 'FileController');
@@ -30,6 +30,7 @@ Route::resource('postimages', 'PostImageController');
 Route::resource('subscriptions', 'SubscriptionController');
 Route::resource('posts', 'PostController');
 Route::get('/', 'HomeController@index')->name('home');
+Route::get('/delete/{id}', 'ClientController@destroy')->name('delete');
 Route::get('/cadastro/{id}', 'HomeController@cadastro')->name('cadastro');
 Route::post('cadastro', ['as'=>'incricao.store','uses'=>'HomeController@store']);
 Route::get('/show/{id}', 'HomeController@show')->name('show');

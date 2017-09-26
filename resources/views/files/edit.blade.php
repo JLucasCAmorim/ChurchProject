@@ -13,12 +13,13 @@
 
     </div>
 @endif
+<div class="container">
 {!! Form::model($file, ['files'=> true,'method' => 'PATCH','route' => ['files.update', $file->id]]) !!}
 
     @include('files.formedit')
 
 {!! Form::close() !!}
-
+</div>
 @endsection
 
 @include('layouts.partials.back', ['route'=>'files.index'])

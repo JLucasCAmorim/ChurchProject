@@ -144,11 +144,38 @@
     <script src="{{ asset('js/jquery-ui.min.js') }}"></script>
     <script src="{{ asset('js/jquery.min.js') }}"></script>
     <script src="{{ asset('js/materialize.min.js') }}"></script>
+    <script type="text/javascript">
+      $('#search').on('keyup', function() {
+        $value=$(this).val();
+        $.ajax({
+          type: 'get',
+          url: '{{URL::to('search')}}',
+          data: {'search':$value},
+          success:function(data){
+            $('tbody').html(data);
+          }
+        });
+      })
+    </script>
+    <script type="text/javascript">
+      function alert() {
+        var strconfirm = confirm('Você tem certeza que deseja excluir esse cadastro?');
+        if (strconfirm === true) {
+          return true;
+        }
+        else{
+            return false;
+        }
 
+      }
+    </script>
     <script>
     $(document).ready(function(){
+
       $('.modal').modal();
-      $('.slider').slider();
+      $('.slider').slider({
+        full_width:true
+      });
       $(".dropdown-button").dropdown();
        $('.parallax').parallax();
        // Initialize collapse button

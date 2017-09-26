@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-
+@section('title', 'Inscrições')
 
 @section('content')
 <div class="section"></div>
@@ -19,7 +19,7 @@
   @foreach ($subscriptions as $subscription)
 
        <div class="col s12 m6">
-         <div class="card medium">
+         <div class="card large">
            <div class="card-image waves-effect waves-block waves-light">
             <img class="activator noticia" src="/uploads/events/{{ $subscription->avatar }}" alt="{{ $subscription->avatar}}"/>
          </div>

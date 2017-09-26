@@ -19,14 +19,17 @@ class ClientController extends Controller
      */
     public function index(Request $request)
     {
+
+
+
       $clients= DB::table('clients')
       ->leftJoin('subscriptions', 'subscription_id', '=', 'subscriptions.id')
       ->select('clients.id', 'clients.nome', 'clients.igreja', 'clients.polo','clients.liderPolo',
        'clients.whatsapp', 'clients.responsavel', 'clients.email', 'clients.idade'
-       ,'clients.pastor', 'clients.liderjuventude', 'clients.estado', 'clients.necessidade', 'subscriptions.title')
+       ,'clients.pastor', 'clients.liderjuventude', 'clients.estado', 'clients.necessidade', 'clients.pago', 'subscriptions.title')
       ->get();
 
-    
+
 
       return view('clients.index',compact('clients'))
 
@@ -98,5 +101,64 @@ class ClientController extends Controller
         return redirect()->route('clients.index')
 
                         ->with('success','Cliente deletado com sucesso!');
+    }
+
+    public function search(Request $request){
+      if($request->ajax()){
+        $output="";
+        $necessidade="";
+        $pago="";
+         $clients = DB::table('clients')
+         ->leftJoin('subscriptions', 'subscription_id', '=', 'subscriptions.id')
+         ->select('clients.id', 'clients.nome', 'clients.igreja', 'clients.polo','clients.liderPolo',
+          'clients.whatsapp', 'clients.responsavel', 'clients.email', 'clients.idade'
+          ,'clients.pastor', 'clients.liderjuventude', 'clients.estado', 'clients.necessidade', 'clients.pago', 'subscriptions.title')
+         ->where('clients.nome', 'LIKE', '%'.$request->search.'%')
+         ->orWhere('subscriptions.title','LIKE', '%'.$request->search.'%')
+         ->get();
+         if($clients){
+           foreach ($clients as $client) {
+             if($client->necessidade == 0){
+                  $necessidade = "Não";
+             }
+             else{
+                $necessidade = "Sim";
+             }
+             if($client->pago == 0){
+                  $pago = "Não";
+             }
+             else{
+                $pago = "Sim";
+             }
+             $output.='<tr>'.
+                      '<td>'.$client->nome.'</td>'.
+                      '<td>'.$client->igreja.'</td>'.
+                      '<td>'.$client->polo.'</td>'.
+                      '<td>'.$client->liderPolo.'</td>'.
+                      '<td>'.$client->whatsapp.'</td>'.
+                      '<td>'.$client->responsavel.'</td>'.
+                      '<td>'.$client->email.'</td>'.
+                      '<td>'.$client->idade.'</td>'.
+                      '<td>'.$client->pastor.'</td>'.
+                      '<td>'.$client->liderjuventude.'</td>'.
+                      '<td>'.$client->estado.'</td>'.
+                      '<td>'.$necessidade.'</td>'.
+                      '<td>'.$client->title.'</td>'.
+                      '<td>'.$pago.'</td>'.
+                      '<td>'.'<center>'.
+                       '<a class="btn btn-primary btn-sm" href="clients/'.$client->id .'/edit">'.
+                       '<i class="small material-icons">'. 'edit' .'</i>'
+                       .'</a>'.
+                       '<form method="DELETE" action="delete/'.$client->id. ' id="FormDelete" style="display:inline" onsubmit="alert()">'.
+                       '<button type="submit" style="display: inline;" class="btn btn-danger btn-sm">'.
+                       '<i class="small material-icons">'. 'delete' .'</i>'
+                       .'</button>'.
+                       '</form>'.
+                       '</center>'.'</td>'.
+                      '</tr>';
+           }
+            return Response($output);
+         }
+      }
     }
 }

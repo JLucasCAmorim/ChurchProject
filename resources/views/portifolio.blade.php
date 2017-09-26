@@ -16,6 +16,9 @@
  <div class="section"></div>
 <div class="row">
     <div class="container">
+      <h3><i class="mdi-content-send brown-text"></i></h3>
+      <h5 class="left-align light" style="text-align: center;">Bem-vindo a nossa página de portfólio estarão aqui todos os nossos albúns de fotos. Aproveite e olhe todos!!</h5>
+      <div class="section"></div>
   @foreach ($portifolios as $portifolio)
         <div class="col s12 m6">
           <div class="card">

@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', 'Artigo')
+@section('title', 'Artigos')
 
 @section('content')
 <div class="container">
@@ -8,7 +8,7 @@
 		<div class="row">
 			<div class="col s12">
 				<h3><i class="mdi-content-send brown-text"></i></h3>
-				<h5 class="left-align light" style="text-align: center;">Bem-vindo a nossa pagina de artigos estarão aqui todos os nossos artigos. Aproveite e leia de todos!!</h5>
+				<h5 class="left-align light" style="text-align: center;">Bem-vindo a nossa página de artigos estarão aqui todos os nossos artigos. Aproveite e leia de todos!!</h5>
 				<div class="section"></div>
 			@foreach ($posts as $post)
 					  @if ($post->category == 'artigo')

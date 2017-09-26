@@ -151,7 +151,7 @@
 
         </div>
       </div>
-
+      
       {{ Form::hidden('subscription_id', $subscription->id ) }}
 
 

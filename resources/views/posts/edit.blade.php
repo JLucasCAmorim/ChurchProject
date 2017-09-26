@@ -13,7 +13,7 @@
 </div>
 
 @endif
-
+<div class="container">
 {!! Form::model($post, ['files'=> true,'method' => 'PATCH','route' => ['posts.update', $post->id]]) !!}
 
     @include('posts.formedit')
@@ -24,6 +24,7 @@
   @foreach ($postimages as $postimage)
   <a class="carousel-item" href="{{ route('postimages.edit',$postimage->id) }}"><img src="/uploads/postimages/{{ $postimage->avatar }}"></a>
   @endforeach
+</div>
 </div>
 @include('postimages.create')
 @endsection

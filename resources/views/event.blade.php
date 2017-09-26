@@ -8,7 +8,7 @@
 		<div class="row">
 			<div class="col s12">
 				<h3><i class="mdi-content-send brown-text"></i></h3>
-				<h5 class="left-align light" style="text-align: center;">Bem-vindo a nossa pagina de eventos estarão aqui todos os nossos evento. Aproveite e participe de todos!!</h5>
+				<h5 class="left-align light" style="text-align: center;">Bem-vindo a nossa página de eventos estarão aqui todos os nossos eventos. Aproveite e participe de todos!!</h5>
 				<div class="section"></div>
 			@foreach ($posts as $post)
 					  @if ($post->category == 'evento')

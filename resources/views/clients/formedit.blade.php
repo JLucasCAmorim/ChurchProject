@@ -151,6 +151,22 @@
 
         </div>
       </div>
+      <div class="row">
+        <div class=" col s12">
+           <label for="pago">Pago:</label>
+      <p>
+          {{ Form::radio('pago', '1', null ,array( 'id' => 'radio3','class' => 'form-control')) }}
+          <label for="radio3">Sim</label><br>
+      </p>
+
+      <p>
+        {{ Form::radio('pago', '0', null ,array( 'id' => 'radio4','class' => 'form-control')) }}
+             <label for="radio4">Não</label>
+
+      </p>
+
+        </div>
+      </div>
 
       {{ Form::hidden('subscription_id', $client->subscription_id ) }}
    <div class="fixed-action-btn">

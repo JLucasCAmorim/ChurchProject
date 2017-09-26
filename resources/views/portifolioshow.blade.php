@@ -26,7 +26,7 @@
 
 
 
-
+@include('layouts.partials.back', ['route'=>'albuns'])
 
 
 @endsection

@@ -16,9 +16,9 @@
        <h5>{{ $post->title}}</h5>
      </center>
       <p style="text-align:justify;">{{ $post->content }}</p>
+
     </div>
   </div>
-
 
 
 
