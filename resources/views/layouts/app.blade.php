@@ -159,13 +159,12 @@
     </script>
     <script type="text/javascript">
       function alert() {
-        var strconfirm = confirm('Você tem certeza que deseja excluir esse cadastro?');
-        if (strconfirm === true) {
-          return true;
-        }
-        else{
-            return false;
-        }
+        if (confirm("Tem certeza que quer deletar o cadastro?")){
+           return true;
+     }
+
+
+        return false;
 
       }
     </script>

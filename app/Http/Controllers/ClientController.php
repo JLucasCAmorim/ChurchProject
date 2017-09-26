@@ -108,6 +108,7 @@ class ClientController extends Controller
         $output="";
         $necessidade="";
         $pago="";
+        $msg = "Você tem certeza que deseja excluir esse cadastro?";
          $clients = DB::table('clients')
          ->leftJoin('subscriptions', 'subscription_id', '=', 'subscriptions.id')
          ->select('clients.id', 'clients.nome', 'clients.igreja', 'clients.polo','clients.liderPolo',
@@ -149,7 +150,7 @@ class ClientController extends Controller
                        '<a class="btn btn-primary btn-sm" href="clients/'.$client->id .'/edit">'.
                        '<i class="small material-icons">'. 'edit' .'</i>'
                        .'</a>'.
-                       '<form method="DELETE" action="delete/'.$client->id. ' id="FormDelete" style="display:inline" onsubmit="alert()">'.
+                       '<form method="DELETE" action="delete/'.$client->id. ' id="FormDelete" style="display:inline" onclick="return alert()">'.
                        '<button type="submit" style="display: inline;" class="btn btn-danger btn-sm">'.
                        '<i class="small material-icons">'. 'delete' .'</i>'
                        .'</button>'.
